@@ -9,6 +9,9 @@ Tehtävät 1 ja 2 tehty
 
 ## Moduuli 3
 
+22.08.2026
+Tehtävä 1 tehty
+
 ## Moduuli 4
 
 ## Moduuli 5
