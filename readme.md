@@ -2,12 +2,10 @@
 
 Tiia Byman
 
-## Moduuli 1
+## Moduuli 1 ja 2
 
 22.08.2026
 Tehtävät 1 ja 2 tehty
-
-## Moduuli 2
 
 ## Moduuli 3
 
