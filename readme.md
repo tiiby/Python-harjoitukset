@@ -12,7 +12,8 @@ Tehtävät 1 ja 2 tehty
 22.08.2026
 Tehtävä 1 tehty
 27.08.2026
-Tehtävät 2-6 tehty
+Tehtävät 2, 3, 4 ja 6 tehty
+Yritetty tehtävää 5
 
 ## Moduuli 4
 
