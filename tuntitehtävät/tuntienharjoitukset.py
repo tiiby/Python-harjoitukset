@@ -1,7 +1,19 @@
-import random
-noppa1 = noppa2 = heitot = 0
-while (noppa1 != 6 or noppa2 != 6):
-    noppa1 = random.randint(1,6)
-    noppa2 = random.randint(1,6)
-    heitot = heitot + 1
-print(f"Tarvittiin {heitot:d} heittoa.")
+nimet = ["Viivi", "Ahmed", "Pekka", "Olga", "Mary"]
+
+for nimi in nimet:
+    print("Moi " + nimi + "!")
+
+for i in range(10):
+    print(i + 1)
+
+for i in range(len(nimet)):
+    print(nimet[i])
+
+for i in range(1,11):
+    print(i)
+
+for i in range(1,11,2):
+    print(i)
+
+for i in range(11,0,-2):
+    print(i)

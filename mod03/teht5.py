@@ -2,9 +2,9 @@ leiviskät_str = input("Anna leiviskät: ")
 naulat_str = input("Anna naulat: ")
 luodit_str = input("Anna luodit: ")
 
-luodit = luodit_str * 13,3
-naulat = naulat_str * 425,6
-leiviskät = leiviskät_str * 8512
+luodit = float(luodit_str * 13,3)
+naulat = float(naulat_str * 425,6)
+leiviskät = float(leiviskät_str * 8512)
 
 yhteensä_grammoina = leiviskät + naulat + luodit
 
