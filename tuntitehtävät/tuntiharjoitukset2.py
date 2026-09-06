@@ -1,3 +1,25 @@
-nimet = ['Kalle', 'Lotta', 'Liisa', 'Pate', 'Daniel']
-nimet.remove("Lotta")
-print(nimet)
+# Luodaan lista nimeltä 'autot'
+autot = [
+    # Ensimmäinen auto (sanakirja)
+    {
+        "merkki": "Toyota",
+        "malli": "Corolla",
+        "vuosimalli": 2018
+    },
+    # Toinen auto (sanakirja)
+    {
+        "merkki": "Ford",
+        "malli": "Focus",
+        "vuosimalli": 2020
+    },
+    # Kolmas auto (sanakirja)
+    {
+        "merkki": "VW",
+        "malli": "ID.3",
+        "vuosimalli": 2023
+    }
+]
+
+for auto in autot:
+    # print(auto["merkki"], auto["malli"], auto["vuosimalli"])
+    print(f"Merkki: {auto['merkki']}, Malli: {auto['malli']}, Vuosimalli: {auto['vuosimalli']}")

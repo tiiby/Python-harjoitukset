@@ -1,19 +1,13 @@
-nimet = ["Viivi", "Ahmed", "Pekka", "Olga", "Mary"]
+class Koira:
 
-for nimi in nimet:
-    print("Moi " + nimi + "!")
+    väri = ""
 
-for i in range(10):
-    print(i + 1)
+    def __init__(self, nimi, syntymävuosi, minun_väri, haukahdus="Vuh-vuh"):
+        self.nimi = nimi
+        self.syntymävuosi = syntymävuosi
+        self.haukahdus = haukahdus
+        Koira.väri = minun_väri
 
-for i in range(len(nimet)):
-    print(nimet[i])
-
-for i in range(1,11):
-    print(i)
-
-for i in range(1,11,2):
-    print(i)
-
-for i in range(11,0,-2):
-    print(i)
+koira1 = Koira("Muro", 2018, "musta")
+koira2 = Koira("Rekku", 2022, "ruskea", "Viu viu viu")
+print(Koira.väri)
