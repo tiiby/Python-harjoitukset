@@ -4,6 +4,8 @@
 käyttäjän_luku = input("Anna luku tai lopeta painamalla Enter: ")
 
 while käyttäjän_luku != "":
-    print(käyttäjän_luku)
     käyttäjän_luku = input("Anna seuraava luku tai lopeta painamalla Enter: ")
-if käyttäjän_luku == "":
+else:
+    pienin_luku = min(käyttäjän_luku)
+    suurin_luku = max(käyttäjän_luku)
+    print("Pienin luku: " + pienin_luku + " ja suurin luku: " + suurin_luku)
