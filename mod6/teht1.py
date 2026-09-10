@@ -10,6 +10,6 @@ for silmaluku in range(montako_noppaa):
     silmaluku = random.randint(1,6)
     noppienluvut.append(silmaluku)
     
-for summa in noppienluvut:
-    summa = sum(noppienluvut)
-    print(summa)
+
+summa = sum(noppienluvut)
+print(summa)

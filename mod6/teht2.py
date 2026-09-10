@@ -7,9 +7,9 @@ numerot = []
 anna_numero = input("Anna numero tai lopeta painamalla Enter: ")
 
 while anna_numero != "":
-    numerot.append(anna_numero)
+    numeroint = int(anna_numero)
+    numerot.append(numeroint)
     anna_numero = input("Anna numero: ")
     
-else:
-    numerot.sort(reverse = True)
-    print(numerot[0:5])
+numerot.sort(reverse = True)
+print(numerot[0:5])

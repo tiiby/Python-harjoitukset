@@ -6,4 +6,12 @@ import random
 
 def silmaluku():
     nopanheitto = random.randint(1,6)
-    return 
+    return nopanheitto
+
+heitto = silmaluku()
+
+print(heitto)
+
+while heitto != 6:
+    heitto = silmaluku()
+    print(heitto)

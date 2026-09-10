@@ -3,15 +3,13 @@
 # Muuntamista jatketaan siihen saakka, kunnes käyttäjä syöttää negatiivisen gallonamäärän.
 # Yksi gallona on 3,785 litraa.
 
-def nestegallona(bensiininmaara):
-    litramaara = bensiininmaara * 3.785
+def nestegallona(gallona):
+    litramaara = gallona * 3.785
     return litramaara
 
-anna_gallonat = float(input("Anna bensiinin määrä gallonina: "))
-tulos = nestegallona(anna_gallonat)
+anna_gallona = float(input("Anna bensiinin määrä nestegallonoina: "))
 
-while anna_gallonat >= 0:
-    print(tulos)
-    anna_gallonat = float(input("Anna bensiinin määrä gallonina: "))
-else:
-    print("Ei negatiivisia lukuja.")
+while anna_gallona >= 0:
+    tulos = nestegallona(anna_gallona)
+    print(f"{anna_gallona} gallonaa on litroina {tulos:.2f}.")
+    anna_gallona = float(input("Anna bensiinin määrä nestegallonoina: "))

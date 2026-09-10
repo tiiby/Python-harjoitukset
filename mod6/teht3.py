@@ -6,7 +6,18 @@
 
 kokonaisluku = int(input("Anna kokonaisluku: "))
 
-if kokonaisluku :
-    print(f"Luku {kokonaisluku} on alkuluku.")
-else:
-    print(f"Luku {kokonaisluku} ei ole alkuluku.")
+if kokonaisluku == 0 or kokonaisluku == 1:
+    print(f"{kokonaisluku} ei ole alkuluku.")
+
+jakaja_loytyi = 0
+
+for alkuluku in range(2, kokonaisluku):
+    if kokonaisluku % alkuluku == 0:
+        jakaja_loytyi = 1
+        break
+
+        
+if jakaja_loytyi == 0:
+    print(f"{kokonaisluku} on alkuluku.")
+if jakaja_loytyi == 1:
+    print(f"{kokonaisluku} ei ole alkuluku.")
