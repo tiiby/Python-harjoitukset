@@ -3,3 +3,9 @@
 # Määritellään kukin vuodenaika kolmen kuukauden mittaiseksi siten, että joulukuu on ensimmäinen talvikuukausi.
 
 kuukaudet = ("tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu")
+
+kevat = ("maaliskuu", "huhtikuu", "toukokuu")
+kesa = ("kesäkuu", "heinäkuu", "elokuu")
+syksy = ("syyskuu", "lokakuu", "marraskuu")
+talvi = ("marraskuu", "joulukuu", "tammikuu")
+

@@ -6,3 +6,9 @@ while eka <= 1000:
     if eka % 3 == 0:
         print(eka)
     eka = eka + 1
+
+luku = 3
+
+while luku <= 1000:
+    print(luku)
+    luku += 3

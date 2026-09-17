@@ -7,5 +7,3 @@ while tuuma >= 0:
     tuumaa_senteiksi = tuuma * 2.54
     print(f"{tuuma} tuumaa on {tuumaa_senteiksi} senttimetriä")
     tuuma = float(input("Anna tuumamäärä: "))
-else:
-    print(str("Et voi syöttää negatiivisia lukuja."))

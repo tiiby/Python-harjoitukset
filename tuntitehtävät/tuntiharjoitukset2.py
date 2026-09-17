@@ -1,29 +1,30 @@
-kayttajan_ika = int(input("Minkä ikäinen olet: "))
+eka_merkkijono = input("Anna merkkijono: ")
+toka_merkkijono = input("Anna toinen merkkijono: ")
 
-if kayttajan_ika >= 18:
-    print("Olet täysi-ikäinen.")
+eka_pituus = len(eka_merkkijono)
+toka_pituus = len(toka_merkkijono)
+
+if eka_pituus > toka_pituus:
+    print("Ensimmäinen on pidempi")
+elif toka_pituus > eka_pituus:
+    print("Toinen on pidempi")
 else:
-    print("Olet alaikäinen.")
+    print("Yhtä pitkiä")
 
-
-kayttajan_nimi = input("Anna nimesi: ")
-
-for i in kayttajan_nimi:
-    print(i)
-
-
-
-kayttajan_luku = input("Anna luku tai lopeta painamalla Enter: ")
-
+luku = int(input("Anna kokonaisluku: "))
 maara = 0
-summa = 0
 
-while kayttajan_luku != "":
-    luku = int(kayttajan_luku)
-    maara = maara + 1
-    summa = summa + luku
+while luku != 999:
+    if luku % 4 == 0:
+        maara += 1
+print(maara)
 
-    kayttajan_luku = input("Anna seuraava luku tai lopeta painamalla Enter: ")
+lista = [-3, 12, -1, 7, -9, 4, 0, 15]
 
-print("Lukuja annettiin:", maara)
-print("Lukujen summa:", summa)
+uusi_lista = []
+
+for i in lista:
+    if i >= 0:
+        uusi_lista.append(i)
+
+print(uusi_lista)

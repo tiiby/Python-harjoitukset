@@ -12,4 +12,6 @@ while anna_numero != "":
     anna_numero = input("Anna numero: ")
     
 numerot.sort(reverse = True)
-print(numerot[0:5])
+
+for luku in numerot:
+    print(luku)
