@@ -5,13 +5,13 @@
 # Tulosta pääohjelmassa sen jälkeen luodun auton kaikki ominaisuudet.
 
 class Auto:
-    nopeus = 0
-    matka = 0
 
     def __init__(self, rekisteritunnus, huippunopeus):
         self.rekisteritunnus = rekisteritunnus
         self.huippunopeus = huippunopeus
+        self.nopeus = 0
+        self.matka = 0
 
 auto1 = Auto("ABC_123", 142)
 
-print(f"Ensimmäisen auton rekisterinumero on {auto1.rekisteritunnus} ja huippunopeus on {auto1.huippunopeus}km/h.")
+print(f"Auton rekisterinumero on {auto1.rekisteritunnus} ja huippunopeus on {auto1.huippunopeus}km/h. Auton tämänhetkinen nopeus on {auto1.nopeus} km/h ja kuljettu matka on {auto1.matka}")

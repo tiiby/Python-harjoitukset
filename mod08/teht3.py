@@ -6,3 +6,18 @@
 # Käyttäjä saa valita uuden toiminnon miten monta kertaa tahansa aina siihen asti, kunnes hän haluaa lopettaa.
 # (ICAO-koodi on lentoaseman yksilöivä tunniste. Esimerkiksi Helsinki-Vantaan lentoaseman ICAO-koodi on EFHK. Löydät koodeja helposti selaimen avulla.)
 
+
+lentoasemat = {"EFHK": "Helsinki", "EGLL": "Lontoo", "RJTT": "Tokio", "KORD": "Chicago", "EFOUL": "Oulu", "LFPG": "Pariisi"}
+
+kayttajanteko = input("Haluatko lisätä listaan (Lisää), hakea lentoasemaa listalta (Haku) vai lopettaa (Lopeta)? ")
+
+while kayttajanteko != "Lopeta":
+    if kayttajanteko == "Lisää":
+        lentasnimi = input("Anna lentoaseman nimi:")
+        ICAO = input("Anna ICAO-koodi: ")
+        lentoasemat[ICAO] = lentasnimi
+    elif kayttajanteko == "Haku":
+        haku = input("Anna lentoaseman ICAO-koodi: ")
+        if haku in lentoasemat:
+            print(lentoasemat[haku])
+    kayttajanteko = input("Haluatko lisätä listaan (Lisää), hakea lentoasemaa listalta (Haku) vai lopettaa (Lopeta)? ")

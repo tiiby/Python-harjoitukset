@@ -9,5 +9,3 @@ def summa(*luvut):
     return s
 
 print("Summa on", summa(1, 2, 3))
-
-
