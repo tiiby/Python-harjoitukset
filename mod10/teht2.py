@@ -5,17 +5,21 @@
 
 class Talo:
 
+
     def __init__(self, alin_kerros, ylin_kerros, hissien_lukumaara):
         self.alin_kerros = alin_kerros
         self.ylin_kerros = ylin_kerros
         self.hissien_lukumaara = hissien_lukumaara
-        hissit = []
+        self.hissit = []
         for hissi in range(hissien_lukumaara):
-            hissit.append = hissi
+            hissi = Hissi(self.alin_kerros, self.ylin_kerros)
+            self.hissit.append(hissi)
 
     def aja_hissia(self, hissinumero, kohdekerros):
-        self.hissinumero = hissinumero
+        hissi = self.hissit[hissinumero -1]
         self.kohdekerros = kohdekerros
+        hissi.siirry_kerrokseen(kohdekerros)
+
 
 class Hissi:
     
@@ -40,3 +44,13 @@ class Hissi:
             self.kerros_ylos()
         while self.nykyinen_kerros > siirry:
             self.kerros_alas()
+
+talo = Talo(1, 25, 2)
+
+talo.aja_hissia(1, 6)
+talo.aja_hissia(1, 3)
+talo.aja_hissia(1, 25)
+
+talo.aja_hissia(2, 3)
+talo.aja_hissia(2, 1)
+
