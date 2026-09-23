@@ -38,6 +38,8 @@ Tehtävät 1, 2, 3 ja 4 tehty
 
 ## Moduuli 10
 
-Tehtävät 1
+Tehtävät 1, 2 ja 3 tehty
 
 ## Moduuli 11
+
+Tehtävä 1 tehty
