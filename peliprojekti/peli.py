@@ -1,4 +1,4 @@
-# funktiot
+# Funktiot
 
 def laula():
     nuotti = "\u266B"
@@ -23,20 +23,36 @@ def lisaa_listalle():
 
 def tulosta_lista():
     print(lista)
+
     
+# Introtekstitiedosto
+
+with open("peliprojekti/intro.txt", "r") as tiedosto:
+    data = tiedosto.read()
+    print(data)
+
 # Globaalit muuttujat
 
 pelaajannimi = input("Kerro nimesi: ")
-pelaajanikä = int(input("Kerro ikäsi: "))
+pelaajanika = int(input("Kerro ikäsi: "))
 lista = []
 
-print(f"Hei, {pelaajannimi}, {pelaajanikä} vuotta.")
+print(f"Hei, {pelaajannimi}, {pelaajanika} vuotta.")
 
 # Peli alkaa, kun pelaaja on yli 12-vuotias
-while pelaajanikä >= 12:
+while pelaajanika >= 12:
     print(f"Tervetuloa pelaamaan {pelaajannimi}!")
-    päävalikko = "Päävalikko\n1. Laula\n2. Kerro vitsi\n3. Mikä on elämän tarkoitus?\n4. Lisää listalle vitsejä\n5. Tulosta lista\nLopettaaksesi, kirjoita 'Lopeta'"
+    päävalikko = "Päävalikko\n1. Laula\n2. Kerro vitsi\n3. Mikä on elämän tarkoitus?\n4. Lisää listalle vitsejä\n5. Tulosta lista\n6. Tallenna lista"
     print(päävalikko)
+
+    # Ohjetekstitiedosto
+
+    with open("peliprojekti/ohjeet.txt", "r") as tiedosto:
+        data = tiedosto.read()
+        print(data)
+
+    # Käyttäjän komennot ja funktiokutsut
+
     komento = input("Anna komento: ")
     if komento == "1.":
         laula()
@@ -62,7 +78,7 @@ while pelaajanikä >= 12:
         break
 
 # Peli loppuu, jos pelaaja on alaikäinen
-if pelaajanikä < 12:
+if pelaajanika < 12:
     print("Olet liian nuori pelaamaan")
 
 # Pelin loppu

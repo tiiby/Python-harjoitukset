@@ -14,7 +14,8 @@ class Talo:
             hissit.append = hissi
 
     def aja_hissia(self, hissinumero, kohdekerros):
-        
+        self.hissinumero = hissinumero
+        self.kohdekerros = kohdekerros
 
 class Hissi:
     

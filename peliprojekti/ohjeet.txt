@@ -1,0 +1,2 @@
+Valitse päävalikosta komento kirjoittamalla komennon numero esim. 1. tai 4.
+Jos haluat lopettaa pelin, kirjoita Lopeta.

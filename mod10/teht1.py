@@ -35,5 +35,3 @@ h = Hissi(1, 25)
 h.siirry_kerrokseen(15)
 
 h.siirry_kerrokseen(1)
-
-

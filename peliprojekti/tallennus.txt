@@ -1,0 +1,1 @@
+{"pelaajan_nimi": "Tiia", "pelaajan_ika": 33, "esineet": [{"nimi": "Lusikka", "paino": 2}, {"nimi": "Haarukka", "paino": 3}], "huoneessa": null}
