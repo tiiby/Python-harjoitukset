@@ -7,7 +7,13 @@
 # (ICAO-koodi on lentoaseman yksilöivä tunniste. Esimerkiksi Helsinki-Vantaan lentoaseman ICAO-koodi on EFHK. Löydät koodeja helposti selaimen avulla.)
 
 
-lentoasemat = {"EFHK": "Helsinki", "EGLL": "Lontoo", "RJTT": "Tokio", "KORD": "Chicago", "EFOUL": "Oulu", "LFPG": "Pariisi"}
+lentoasemat = {
+    "EFHK": "Helsinki",
+    "EGLL": "Lontoo",
+    "RJTT": "Tokio",
+    "KORD": "Chicago",
+    "EFOUL": "Oulu",
+    "LFPG": "Pariisi"}
 
 kayttajanteko = input("Haluatko lisätä listaan (Lisää), hakea lentoasemaa listalta (Haku) vai lopettaa (Lopeta)? ")
 

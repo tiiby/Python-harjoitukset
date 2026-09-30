@@ -57,3 +57,5 @@ talo.aja_hissia(2, 3)
 talo.aja_hissia(2, 1)
 
 talo.palohalytys()
+
+talo.aja_hissia(1, 16)
