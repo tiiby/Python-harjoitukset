@@ -1,8 +1,7 @@
 from pelaaja import Pelaaja
 from huoneet import Huone
+from karhu import Karhu
 import json
-
-# Funktiot
 
 # Tallennusfunktio
 def tallenna(pelaaja):
@@ -10,21 +9,38 @@ def tallenna(pelaaja):
     nimi = pelaaja.nimi
     ika = pelaaja.ika
     esineet = []
+    huone = pelaaja.nykyinen_huone.nimi
     for item in pelaaja.esineet:
-        esineet.append({
-            "nimi": item,
-        })
+        esineet.append(item)
 
     pelaajan_data = {
         "pelaajan_nimi": nimi,
         "pelaajan_ika": ika,
         "esineet": esineet,
+        "huone": huone
     }
 
     with open("oikeapeliprojekti/save.json", "w") as tiedosto:
         json.dump(pelaajan_data, tiedosto)
 
     print("Pelaaja tallennettu")
+
+def tallennuksen_haku(huoneet):
+
+    try:
+        with open("oikeapeliprojekti/save.json", "r") as tiedosto:
+            pelaajan_data = json.load(tiedosto)
+            pelaajannimi = pelaajan_data["pelaajan_nimi"]
+            pelaajanika = pelaajan_data["pelaajan_ika"]
+            pelaajan_esineet = pelaajan_data["esineet"]
+            huoneen_nimi = pelaajan_data["huone"]
+            nykyinen_huone = huoneet[huoneen_nimi]
+            
+            pelaaja = Pelaaja(pelaajannimi, pelaajanika, nykyinen_huone, pelaajan_esineet)
+
+            return pelaaja
+    except:
+        return None
 
 # Ohjeteksti
 def ohjeet():
@@ -38,15 +54,13 @@ def intro():
         data = tiedosto.read()
         print(data)
 
-# Kerää huoneen esineen pelaajalle
-def keraa_esine(esine):
-    pelaaja.esineet.append(esine)
 
 # Antaa tiedon missä huoneessa ollaan ja mitä huoneessa on
 def status():
     print("*****************")
-    print(f"Olet tällä hetkellä {nykyinen_sijainti.nimi}\nSinulla on {pelaaja.esineet}")
-    print(f"Näet {nykyinen_sijainti.huoneen_esine}")
+    print(f"Olet tällä hetkellä {pelaaja.nykyinen_huone.nimi}\nSinulla on {pelaaja.esineet}")
+    if len(pelaaja.nykyinen_huone.huoneen_esine) > 0:
+        print(f"Näet {pelaaja.nykyinen_huone.huoneen_esine}")
     print("*****************")
 
 
@@ -57,9 +71,30 @@ pelaajanika = int(input("Kerro ikäsi: "))
 # Peli alkaa, kun pelaaja on yli 12-vuotias
 if pelaajanika >= 12:
     
-    # Tähän olemassa olevan tallennuksen tarkastaminen?
+    # Luodaan huoneet ja pelaajaolio
 
-    pelaaja = Pelaaja(pelaajannimi, pelaajanika)
+    karhu = Karhu("karhu")
+    metsan_reuna = Huone("metsänreunassa", "karhuspray")
+    metsa = Huone("metsässä", "roskia")
+    syvempi_metsa = Huone("syvemmällä metsässä", karhu)
+
+    huoneet = {
+        "metsänreunassa": metsan_reuna,
+        "metsässä": metsa,
+        "syvemmällä metsässä": syvempi_metsa
+    }
+
+    # Tarkistetaan onko nimellä tallennusta
+    with open("peliprojekti/tallennus.txt", "r") as tiedosto:
+        data_luettu = json.load(tiedosto)
+
+    nimi = data_luettu["pelaajan_nimi"]
+
+    if nimi == pelaajannimi:
+        pelaaja = tallennuksen_haku(huoneet)
+    else:
+        pelaaja = Pelaaja(pelaajannimi, pelaajanika, metsan_reuna, ["roskapussi"])
+
 
     # Introtekstitiedosto
     intro()
@@ -67,55 +102,67 @@ if pelaajanika >= 12:
     # Ohjetekstitiedosto
     ohjeet()
 
-    metsan_reuna = Huone("Metsänreunassa", "karhuspray")
-    metsa = Huone("Metsässä", "roskia")
-    syvempi_metsa = Huone("Syvemmällä metsässä", "Karhu")
-
-    nykyinen_sijainti = metsan_reuna
-
     # Pelin looppi
     
     while True:
 
         status()
 
-        toimi = input("Mitä teet? ").lower()
+        toimi = input("Mitä teet? ").lower().split(" ", 1)
 
+        # Virheellisten inputtien käsittelyä
+        komennot = ["kerää", "liiku", "tallenna"]
 
-        toimi = toimi.split(" ", 1)
+        if toimi[0] not in komennot:
+            print("Anna toimiva komento.")
+            continue
+        if toimi[0] == "kerää" and len(toimi) == 1:
+            print("Komennon muoto: kerää <esine>")
+            continue
+        if toimi[0] == "liiku" and len(toimi) == 1:
+            print("Komennon muoto: liiku <suunta>")
+            continue
+        if toimi[0] == "tallenna" and len(toimi) != 1:
+            print("Komennon muoto: tallenna")
+            continue
 
         # Tavaroiden kerääminen ja poistaminen huoneista
-        if toimi[0] == "kerää":
-            if toimi[1] in nykyinen_sijainti.huoneen_esine:
-                keraa_esine(toimi[1])
-                print(f"Sinulla on nyt {pelaaja.esineet}")
+        if toimi[0] == "kerää" and len(toimi) == 2:
+            if len(pelaaja.nykyinen_huone.huoneen_esine) == 0:
+                print("Huone on tyhjä.")
+            elif toimi[1] in pelaaja.nykyinen_huone.huoneen_esine:
+                pelaaja.keraa_esine(toimi[1])
+                pelaaja.nykyinen_huone.poista_esine(toimi[1])
             else:
-                print(f"Ei täällä ole mitään!")
+                print("Tätä esinettä ei ole huoneessa.")
 
         # Liikkuminen huoneiden välillä
-        if toimi[0] == "liiku":
-            if toimi[1] != nykyinen_sijainti:
-                nykyinen_sijainti = toimi[1]
-                print(f"Olet nyt {nykyinen_sijainti}")
-
+        if toimi[0] == "liiku" and len(toimi) == 2:
+            if toimi[1] in huoneet:
+                pelaaja.liiku(huoneet[toimi[1]])
+            else:
+                print("Et voi liikkua tänne.")
+            
         # Peli tilanteen tallentaminen
-        if toimi[0] == "tallenna":
+        if toimi[0] == "tallenna" and len(toimi) == 1:
             tallenna(pelaaja)
             break
 
         # Pelin voittaminen
-        if "roskapussi" in pelaaja.esineet and "roskia" in pelaaja.esineet:
+        if "roskapussi" in pelaaja.esineet and "roskia" in pelaaja.esineet and pelaaja.nykyinen_huone == metsan_reuna:
             print("Olet kerännyt roskat metsästä ja metsä on puhdas taas!\nMetsän eläimet kiittävät sinua ja voit viedä roskat roskiin.")
+            break
 
         # Pelin häviäminen kahdella tapaa
-        if nykyinen_sijainti == syvempi_metsa:
-            if "karhuspary" in pelaaja.esineet:
-                print("Oi ei! Syvemmällä metsässä vastaan tuli karhu, mutta onneksi sinulla on karhuspray mukana.\nSait karhun karkotettua ja juostua pakoon.")
-                break
+        if pelaaja.nykyinen_huone == syvempi_metsa:
+            if "karhuspray" in pelaaja.esineet:
+                pelaaja.karhuspray(karhu)
+                print("Oi ei! Syvemmällä metsässä vastaan tuli karhu, mutta onneksi sinulla on karhuspray mukana.\nSait karhun karkotettua ja juostua pakoon, mutta koska metsä on edelleen täynnä roskia, hävisit pelin.")
+                quit()
             else:
+                karhu.purema(pelaaja)
                 print("Oi ei! Syvemmällä metsässä vastaan tuli karhu ja jouduit karhun ruuaksi elämän kiertokulkuun")
-                break
-
+                quit()
 
 # Peli loppuu, jos pelaaja on alaikäinen
 if pelaajanika < 12:

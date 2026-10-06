@@ -8,3 +8,5 @@ liiku [metsä/syvemmälle metsään/metsän reunaan]
 
 Tallenna peli antamalla komento:
 tallenna
+
+Jos sinulla on jo olemassa tallennus, peli hakee tallenuksen, kun olet antanut aiemmin antamasi nimen ja iän.
