@@ -25,6 +25,7 @@ def tallenna(pelaaja):
 
     print("Pelaaja tallennettu")
 
+# Aiemman tallennuksen haku
 def tallennuksen_haku(huoneet):
 
     try:
@@ -40,7 +41,7 @@ def tallennuksen_haku(huoneet):
 
             return pelaaja
     except:
-        return None
+        print("Tuli ongelmia.")
 
 # Ohjeteksti
 def ohjeet():
@@ -71,8 +72,7 @@ pelaajanika = int(input("Kerro ikäsi: "))
 # Peli alkaa, kun pelaaja on yli 12-vuotias
 if pelaajanika >= 12:
     
-    # Luodaan huoneet ja pelaajaolio
-
+    # Luodaan huoneet, pelaaja ja karhu
     karhu = Karhu("karhu")
     metsan_reuna = Huone("metsänreunassa", "karhuspray")
     metsa = Huone("metsässä", "roskia")
@@ -89,12 +89,14 @@ if pelaajanika >= 12:
         data_luettu = json.load(tiedosto)
 
     nimi = data_luettu["pelaajan_nimi"]
+    ika = data_luettu["pelaajan_ika"]
 
-    if nimi == pelaajannimi:
+    if nimi == pelaajannimi and pelaajanika == ika:
+        print("\nTallennus löydetty!\n")
         pelaaja = tallennuksen_haku(huoneet)
+    # Jos ei ole, niin tehdään uusi pelaaja
     else:
         pelaaja = Pelaaja(pelaajannimi, pelaajanika, metsan_reuna, ["roskapussi"])
-
 
     # Introtekstitiedosto
     intro()
@@ -103,7 +105,6 @@ if pelaajanika >= 12:
     ohjeet()
 
     # Pelin looppi
-    
     while True:
 
         status()

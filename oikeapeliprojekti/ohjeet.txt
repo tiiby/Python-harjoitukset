@@ -1,12 +1,14 @@
 Annettavat komennot:
 
 Kerää huoneessa sijaitseva esine antamalla komento:
-kerää [esine]
+kerää <esine>
 
 Liiku huoneesta toiseen antamalla komento:
-liiku [metsä/syvemmälle metsään/metsän reunaan]
+liiku <metsäsänreunassa>
+liiku <metsässä>
+liiku <syvemällä metsässä>
 
 Tallenna peli antamalla komento:
 tallenna
 
-Jos sinulla on jo olemassa tallennus, peli hakee tallenuksen, kun olet antanut aiemmin antamasi nimen ja iän.
+Jos sinulla on jo olemassa tallennus, peli hakee tallennuksen, kun olet antanut aiemmin antamasi nimen ja iän.
