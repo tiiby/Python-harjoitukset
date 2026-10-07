@@ -39,6 +39,7 @@ def tallennuksen_haku(huoneet):
             nykyinen_huone = huoneet[huoneen_nimi]
             
             pelaaja = Pelaaja(pelaajannimi, pelaajanika, nykyinen_huone, pelaajan_esineet)
+            print("\nTallennus löydetty!\n")
 
             return pelaaja
     except:
