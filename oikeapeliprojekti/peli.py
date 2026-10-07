@@ -2,6 +2,7 @@ from pelaaja import Pelaaja
 from huoneet import Huone
 from karhu import Karhu
 import json
+import os
 
 # Tallennusfunktio
 def tallenna(pelaaja):
@@ -41,7 +42,7 @@ def tallennuksen_haku(huoneet):
 
             return pelaaja
     except:
-        print("Tuli ongelmia.")
+        return None
 
 # Ohjeteksti
 def ohjeet():
@@ -85,15 +86,12 @@ if pelaajanika >= 12:
     }
 
     # Tarkistetaan onko nimellä tallennusta
-    with open("peliprojekti/tallennus.txt", "r") as tiedosto:
-        data_luettu = json.load(tiedosto)
-
-    nimi = data_luettu["pelaajan_nimi"]
-    ika = data_luettu["pelaajan_ika"]
-
-    if nimi == pelaajannimi and pelaajanika == ika:
-        print("\nTallennus löydetty!\n")
+    if os.path.exists("oikeapeliprojekti/save.json"):
         pelaaja = tallennuksen_haku(huoneet)
+        if pelaaja == None:
+            pelaaja = Pelaaja(pelaajannimi, pelaajanika, metsan_reuna, ["roskapussi"])
+        if pelaaja.nimi != pelaajannimi or pelaaja.ika != pelaajanika:
+            pelaaja = Pelaaja(pelaajannimi, pelaajanika, metsan_reuna, ["roskapussi"])
     # Jos ei ole, niin tehdään uusi pelaaja
     else:
         pelaaja = Pelaaja(pelaajannimi, pelaajanika, metsan_reuna, ["roskapussi"])
